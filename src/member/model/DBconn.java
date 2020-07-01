@@ -23,11 +23,11 @@ public class DBconn {
 					
 			}
 		} catch (ClassNotFoundException e) {
-			System.out.println("driver ëª» ì°¾ìŒ, ojdbc lib í™•ì¸");
-			e.printStackTrace(); //driver ëª» ì°¾ìŒ, ojdbc lib í™•ì¸
+			System.out.println("driver ¸øÃ£À½, ojdbc lib È®ÀÎ ÇÊ¿ä");
+			e.printStackTrace(); //driver ¸øÃ£À½, ojdbc lib È®ÀÎ ÇÊ¿ä
 		} catch (SQLException e) {
-			System.out.println("url, id, pwd ì…ë ¥ í™•ì¸");
-			e.printStackTrace(); //url, id, pwd ì…ë ¥ í™•ì¸
+			System.out.println("url, id, pwd ÀÔ·Â È®ÀÎ");
+			e.printStackTrace(); //url, id, pwd ÀÔ·Â È®ÀÎ
 		}
 		
 		return conn;
