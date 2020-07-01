@@ -21,19 +21,16 @@ public class LoginCheckController extends HttpServlet {
 		LoginModel model = new LoginModel();
 		
 		MemberVO mvo = model.selectIdCheck(id, pwd);
-//		int result = model.selectIdCheck(id, pwd);
 		
 		String path="";
 		if(mvo != null) {
-			path = "WEB-INF/index.jsp";
-			RequestDispatcher rd = request.getRequestDispatcher(path);
 			request.setAttribute("loginFlag", "suc");
 			
 			HttpSession session = request.getSession();
 			session.setAttribute("userID", mvo.getId());
 			session.setAttribute("userNAME", mvo.getName());			
 
-			rd.forward(request, response);
+			response.sendRedirect("main");
 		} else {
 			request.setAttribute("loginFlag", "Fail");
 			response.sendRedirect("login");
