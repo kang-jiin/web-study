@@ -5,16 +5,18 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import member.vo.MemberVO;
+
 public class LoginModel {
 	
-	public int selectIdCheck(String id, String pwd) {
+	public MemberVO selectIdCheck(String id, String pwd) {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		int result = 0;
+		MemberVO mvo = new MemberVO();
 		
 		conn = DBconn.getConnetion();
-		String sql = "select count(id) from users "
+		String sql = "select * from users "
 				+ "where id = ? "
 				+ "and pwd = ? ";
 		
@@ -23,8 +25,9 @@ public class LoginModel {
 			pstmt.setString(1, id);
 			pstmt.setString(2, pwd);
 			rs = pstmt.executeQuery();
-			while(rs.next()) {
-				result = rs.getInt("count(id)"); //1
+			while(rs.next()) {				
+				mvo.setId(rs.getString("id"));
+				mvo.setName(rs.getString("name"));
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -34,7 +37,7 @@ public class LoginModel {
 		}
 		
 		
-		return result;		
+		return mvo;		
 		
 		
 	}

@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/login")
 public class LoginController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/jsp/login.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/users/login.jsp");
 		rd.forward(request, response);
 				
 	}

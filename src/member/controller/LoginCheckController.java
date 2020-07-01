@@ -8,8 +8,10 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import member.model.LoginModel;
+import member.vo.MemberVO;
 
 @WebServlet("/logincheck")
 public class LoginCheckController extends HttpServlet {
@@ -17,20 +19,25 @@ public class LoginCheckController extends HttpServlet {
 		String id = request.getParameter("id");
 		String pwd = request.getParameter("pwd");
 		LoginModel model = new LoginModel();
-		int result = model.selectIdCheck(id, pwd);
+		
+		MemberVO mvo = model.selectIdCheck(id, pwd);
+//		int result = model.selectIdCheck(id, pwd);
 		
 		String path="";
-		if(result == 1) {
-			System.out.println("로그인 완료");
-			path = "WEB-INF/jsp/main.jsp";
+		if(mvo != null) {
+			path = "WEB-INF/index.jsp";
 			RequestDispatcher rd = request.getRequestDispatcher(path);
+			request.setAttribute("loginFlag", "suc");
+			
+			HttpSession session = request.getSession();
+			session.setAttribute("userID", mvo.getId());
+			session.setAttribute("userNAME", mvo.getName());			
+
 			rd.forward(request, response);
 		} else {
-			System.out.println("로그인 실패");
-//			path = "WEB-INF/jsp/login.jsp";
+			request.setAttribute("loginFlag", "Fail");
 			response.sendRedirect("login");
-		}
-		
+		}		
 		
 	}
 
