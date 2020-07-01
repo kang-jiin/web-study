@@ -19,9 +19,9 @@
 			<% } %>
 				<ul class="navbar-nav ml-auto">
 					<% if(user == null) { %>
-					<li class="nav-item cta mr-md-1"><a href="loginPage.do" class="nav-link">Login</a></li>
+					<li class="nav-item cta mr-md-1"><a href="login" class="nav-link">Login</a></li>
 					<% } else { %>
-					<li class="nav-item cta mr-md-1"><a href="logoutPage.do" class="nav-link">Logout</a></li>
+					<li class="nav-item cta mr-md-1"><a href="logout" class="nav-link">Logout</a></li>
 					<% } %>
 				</ul>
 			</div>

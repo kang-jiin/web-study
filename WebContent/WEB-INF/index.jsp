@@ -29,32 +29,23 @@
 						</div>
 						<% } %>
 
-						<c:forEach items="${postlist}" var="postlist">
-							<div class="col-md-12 ftco-animate"
-								onclick="location.href = 'PostDetail.do?id=${postlist.ID}';">
+						<c:forEach items="${blist}" var="blist">
+							<div class="col-md-12 ftco-animate">
 								<div
 									class="job-post-item p-4 d-block d-lg-flex align-items-center">
 									<div class="one-third mb-4 mb-md-0">
 										<div class="d-block d-md-flex align-items-center">
 											<span class="subadge">
-											${ postlist.ID}.
+											${ blist.id}.
 											</span>
 											<h5 class="ml-3">
-												${ postlist.DATETIME} /  ${ postlist.HOUR}시 ${ postlist.MIN}분    
+												${ blist.writer}    
 											</h5>
 										</div>
 										<div class="align-items-center">
 											<h2 class="mr-3 text-black">
-												${ postlist.TITLE}  
+												${ blist.content}  
 											</h2>
-										</div>
-										<div class="d-block d-md-flex">
-											<div class="mr-3">
-												<span class="icon-layers"></span> ${ postlist.WRITER}
-											</div>
-											<div>
-												<span class="icon-my_location"></span> ${ postlist.ADDRESS}
-											</div>
 										</div>
 									</div>
 								</div>
