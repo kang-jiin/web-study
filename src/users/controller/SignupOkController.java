@@ -1,4 +1,4 @@
-package member.controller;
+package users.controller;
 
 import java.io.IOException;
 
@@ -9,13 +9,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import member.model.JoinModel;
+import users.model.SignupModel;
 
 /**
  * Servlet implementation class JoinOkController
  */
-@WebServlet("/joinok")
-public class JoinOkController extends HttpServlet {
+@WebServlet("/signupok")
+public class SignupOkController extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
@@ -23,25 +23,17 @@ public class JoinOkController extends HttpServlet {
 		String pwd = request.getParameter("pwd");
 		String name = request.getParameter("name");
 		
-		JoinModel model = new JoinModel();
+		SignupModel model = new SignupModel();
 		
 		int resultS = model.selectUserCheck(id);
-		String path="";
 		if(resultS == 1) {
-			//회원가입 창 이동
-//			path="WEB-INF/jsp/join.jsp";
-			response.sendRedirect("join");
+			response.sendRedirect("signup");
 		}else {
 			int resultI = model.insertJoin(id, pwd, name);
 			if(resultI == 1) {
-				//회원가입 성공 창
-				path="WEB-INF/jsp/join-ok.jsp";
-				RequestDispatcher rd = request.getRequestDispatcher(path);
-				rd.forward(request, response);
+				response.sendRedirect("login");
 			}else {
-				//회원가입 창 이동
-//				path="WEB-INF/jsp/join.jsp";
-				response.sendRedirect("join");
+				response.sendRedirect("signup");
 			}
 			
 		}

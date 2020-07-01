@@ -21,14 +21,21 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-12 pr-lg-4">
-					<div class="row">
 					<% String userId = (String)session.getAttribute("userID"); 
 						if(userId != null) { %>
-						<div class="col-md-12 ftco-animate text-lg-right">
-							<a href="PostInsertPage.do" class="btn btn-primary mb-4">공고 등록</a>
+					<form method="POST" action="insertBoard">
+	                	<div class="row">
+		                    <div class="form-group col-10">
+		                        <input type="text" class="form-control" id="content" name="content">
+		                    </div>
+		                    <div class="form-group col-2">
+		                        <button class="btn btn-secondary" type="submit">글쓰기</button>
+		                    </div>
 						</div>
-						<% } %>
+            		</form>
+					<% } %>
 
+					<div class="row">
 						<c:forEach items="${blist}" var="blist">
 							<div class="col-md-12 ftco-animate">
 								<div

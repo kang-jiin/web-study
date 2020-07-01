@@ -1,6 +1,6 @@
-package member.vo;
+package users.vo;
 
-public class MemberVO {
+public class UsersVO {
 	private String id;
 	private String pwd;
 	private String name;

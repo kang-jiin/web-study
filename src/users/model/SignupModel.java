@@ -1,13 +1,13 @@
-package member.model;
+package users.model;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class JoinModel {
+public class SignupModel {
 
-	//아이디가 있는지 체크
+	//�븘�씠�뵒媛� �엳�뒗吏� 泥댄겕
 	public int selectUserCheck(String id) {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -56,22 +56,6 @@ public class JoinModel {
 		}
 		return result;
 		
-	}
-
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+	}	
 	
 }

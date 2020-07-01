@@ -1,19 +1,19 @@
-package member.model;
+package users.model;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import member.vo.MemberVO;
+import users.vo.UsersVO;
 
 public class LoginModel {
 	
-	public MemberVO selectIdCheck(String id, String pwd) {
+	public UsersVO selectIdCheck(String id, String pwd) {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		MemberVO mvo = new MemberVO();
+		UsersVO mvo = new UsersVO();
 		
 		conn = DBconn.getConnetion();
 		String sql = "select * from users "

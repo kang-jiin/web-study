@@ -30,7 +30,7 @@
 				<div class="col-md-12 col-lg-8 mb-5">
 
 					<form action="logincheck" method="post" class="p-5 bg-white">
-						<c:if test="${loginFlag == 'Fail'}">
+						<c:if test="${not empty loginFlag}">
 							<p style="color: red;">아이디 또는 비밀번호가 잘못되었습니다.</p>
 						</c:if>
 						<div class="form-group">
@@ -44,10 +44,10 @@
 								placeholder="Password" name="pwd">
 						</div>
 
-						<div class="row form-group">
+						<div class="row form-group" align="center">
 							<div class="col-md-12">
-								<!-- <input type="submit" value="로그인" class="btn btn-primary  py-2 px-5"> -->
-								<button type="submit" class="btn btn-primary btn-block">로그인</button>
+								<button type="submit" class="btn btn-primary">로그인</button>
+								<a href="signup" class="btn btn-warning">회원가입</a>
 							</div>
 						</div>
 					</form>

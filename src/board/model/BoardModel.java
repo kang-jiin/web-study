@@ -6,7 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import member.model.DBconn;
+import users.model.DBconn;
 import board.vo.BoardVO;
 
 public class BoardModel {
@@ -41,8 +41,32 @@ public class BoardModel {
 			DBconn.close(pstmt, rs);
 		}
 		return blist;
-		
-		
+				
 	}
+	
+
+	public int insertBoard(String writer, String content) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		int result = 0;
+		
+		conn = DBconn.getConnetion();
+		String sql = "insert into board (id, writer, content) "
+				   + "values ( board_seq.NEXTVAL , ? , ? )";
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, writer);
+			pstmt.setString(2, content);
+			
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBconn.close(pstmt, rs);
+		}
+		
+		return result;
+	}	
 
 }
